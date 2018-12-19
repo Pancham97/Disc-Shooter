@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 
 const CannonPipe = (props) => {
     const cannonPipeStyle = {
-        fill: "#999",
-        stroke: "#666",
+        fill: "#999999",
+        stroke: "#666666",
         strokeWidth: "2px",
     };
 
