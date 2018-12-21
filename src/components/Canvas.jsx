@@ -12,8 +12,10 @@ import StartGame from './StartGame';
 import Title from './Title';
 import Login from './Login';
 import { signIn } from 'auth0-web';
+import Leaderboard from './Leaderboard';
 
 const Canvas = (props) => {
+
     const gameHeight = 1200;
     const viewBox = [window.innerWidth / -2, 100 - gameHeight, window.innerWidth, gameHeight];
 
@@ -40,7 +42,7 @@ const Canvas = (props) => {
                 <g>
                     <StartGame onClick={() => props.startGame()} />
                     <Title />
-                    <Login authenticate={signIn} />
+                    <Leaderboard currentPlayer={props.currentPlayer} authenticate={signIn} leaderboard={props.players} />
                 </g>
             }
 
@@ -76,6 +78,23 @@ Canvas.propTypes = {
         })).isRequired,
     }).isRequired,
     startGame: PropTypes.func.isRequired,
+    currentPlayer: PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        maxScore: PropTypes.number.isRequired,
+        name: PropTypes.string.isRequired,
+        picture: PropTypes.string.isRequired,
+    }),
+    players: PropTypes.arrayOf(PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        maxScore: PropTypes.number.isRequired,
+        name: PropTypes.string.isRequired,
+        picture: PropTypes.string.isRequired,
+    })),
+};
+
+Canvas.defaultProps = {
+    currentPlayer: null,
+    players: null,
 };
 
 export default Canvas;
