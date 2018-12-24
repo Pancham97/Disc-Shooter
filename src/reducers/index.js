@@ -1,7 +1,7 @@
-import { MOVE_OBJECTS, START_GAME, LEADERBOARD_LOADED, LOGGED_IN } from "../actions";
+import { MOVE_OBJECTS, START_GAME, LEADERBOARD_LOADED, LOGGED_IN, SHOOT, shoot } from "../actions";
 import moveObjects from './moveObjects';
 import startGame from "./startGame";
-
+import shooter from './shoot';
 
 const initialGameState = {
     started: false,
@@ -34,6 +34,8 @@ function reducer(state = initialState, action) {
             return moveObjects(state, action);
         case START_GAME:
             return startGame(state, initialGameState);
+        case SHOOT:
+            return shooter(state, action);
         default:
             return state;
     }
