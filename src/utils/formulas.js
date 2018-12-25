@@ -44,3 +44,21 @@ export const getCanvasPosition = (event) => {
     const { x, y } = point.matrixTransform(svg.getScreenCTM().inverse());
     return {x, y};
 };
+
+const degreeToRadian = degrees => ((degrees * Math.PI) / 180);
+
+export const calculateNextPosition = (x, y, angle, divisor = 300) => {
+    const realAngle = (angle * -1) + 90;
+    const stepsX = radiansToDegrees(Math.cos(degreeToRadian(realAngle))) / divisor;
+    const stepsY = radiansToDegrees(Math.sin(degreeToRadian(realAngle))) / divisor;
+
+    return {
+        x: x + stepsX,
+        y: y - stepsY,
+    };
+}
+
+export const checkCollision = (rectA, rectB) => (
+    rectA.x1 < rectB.x2 && rectA.x2 > rectB.x1 &&
+    rectA.y1 < rectB.y2 && rectA.y2 > rectB.y1
+);

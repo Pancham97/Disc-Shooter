@@ -11,6 +11,7 @@ const initialGameState = {
     lastObjectCreatedAt: new Date(),
     currentPlayer: null,
     players: null,
+    cannonBalls: [],
 };
 
 const initialState = {
