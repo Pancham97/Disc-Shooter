@@ -13,6 +13,7 @@ import Title from './Title';
 import Login from './Login';
 import { signIn } from 'auth0-web';
 import Leaderboard from './Leaderboard';
+import Guidelines from './Guidelines';
 
 const Canvas = (props) => {
 
@@ -58,6 +59,7 @@ const Canvas = (props) => {
                 <g>
                     <StartGame onClick={() => props.startGame()} />
                     <Title />
+                    <Guidelines />
                     {/* <Leaderboard currentPlayer={props.currentPlayer} authenticate={signIn} leaderboard={props.players} /> */}
                 </g>
             }
